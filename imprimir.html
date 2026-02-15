@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Más Sabor - Menú Digital</title>
+    
+    <!-- Fuentes Google: Fredoka para títulos (similar al logo) y Nunito para lectura -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración de Colores Personalizados -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ms: {
+                            light: '#dafddc',   // Fondo muy claro
+                            bg: '#dcfddc',      // Fondo claro
+                            card: '#bbe1be',    // Fondo tarjetas/acento
+                            accent: '#7fb187',  // Verde medio
+                            dark: '#59a96d',    // Verde oscuro/texto principal
+                        }
+                    },
+                    fontFamily: {
+                        'brand': ['Fredoka', 'sans-serif'],
+                        'body': ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos base y animaciones */
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #dcfddc;
+            background-image: radial-gradient(#59a96d 0.5px, transparent 0.5px), radial-gradient(#59a96d 0.5px, #dcfddc 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-opacity: 0.1;
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(89, 169, 109, 0.2);
+        }
+
+        .price-tag {
+            background-color: #dafddc;
+            color: #59a96d;
+            font-weight: 800;
+        }
+
+        .dashed-line {
+            flex-grow: 1;
+            border-bottom: 2px dotted #7fb187;
+            margin: 0 10px;
+            opacity: 0.5;
+            position: relative;
+            top: -5px;
+        }
+        
+        /* Animación suave de entrada */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="text-gray-700 pb-12">
+
+    <!-- Header -->
+    <header class="bg-ms-dark text-white pt-8 pb-16 rounded-b-[3rem] shadow-lg relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <i class="fas fa-coffee absolute top-10 left-10 text-6xl"></i>
+            <i class="fas fa-utensils absolute bottom-10 right-10 text-6xl"></i>
+            <i class="fas fa-cookie absolute top-20 right-20 text-4xl"></i>
+        </div>
+        
+        <div class="container mx-auto px-4 text-center relative z-10 flex flex-col items-center">
+            <!-- Logo Imagen -->
+            <div class="bg-white p-1 rounded-full mb-4 shadow-lg w-32 h-32 flex items-center justify-center overflow-hidden">
+                <img src="logoo.png" 
+                     alt="Logo Más Sabor" 
+                     class="w-full h-full object-cover rounded-full"
+                     onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas fa-utensils text-4xl text-ms-dark\'></i>'">
+            </div>
+            
+            <h1 class="text-5xl font-brand font-bold tracking-wide uppercase drop-shadow-md">Más Sabor</h1>
+            <p class="text-ms-bg text-xl font-body mt-2">Cafetería & Pastelería Artesanal</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 -mt-10 max-w-4xl">
+        
+        <!-- Sección Promociones (Destacada) -->
+        <section class="mb-8 animate-in delay-100">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-4 border-ms-accent">
+                <div class="bg-ms-accent p-3 text-center">
+                    <h2 class="text-2xl font-brand font-bold text-white uppercase tracking-wider">
+                        <i class="fas fa-star text-yellow-300 mr-2"></i> Promociones <i class="fas fa-star text-yellow-300 ml-2"></i>
+                    </h2>
+                </div>
+                <div class="p-6 grid gap-4 md:grid-cols-3">
+                    <!-- Promo 1 -->
+                    <div class="bg-ms-light rounded-xl p-4 text-center border border-ms-card card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="text-3xl mb-2 text-ms-dark"><i class="fas fa-mug-hot"></i> + <i class="fas fa-cookie"></i></div>
+                            <h3 class="font-bold text-lg text-gray-800">Café + Petit Four</h3>
+                        </div>
+                        <p class="text-2xl font-brand font-bold text-ms-dark mt-2">$5.000</p>
+                    </div>
+                    
+                    <!-- Promo 2 -->
+                    <div class="bg-ms-light rounded-xl p-4 text-center border border-ms-card card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="text-3xl mb-2 text-ms-dark"><i class="fas fa-mug-hot"></i> + <i class="fas fa-bread-slice"></i></div>
+                            <h3 class="font-bold text-lg text-gray-800">Café + 2 Medialunas</h3>
+                        </div>
+                        <p class="text-2xl font-brand font-bold text-ms-dark mt-2">$5.000</p>
+                    </div>
+
+                    <!-- Promo 3 -->
+                    <div class="bg-ms-light rounded-xl p-4 text-center border border-ms-card card-hover flex flex-col justify-between">
+                        <div>
+                            <div class="text-3xl mb-2 text-ms-dark"><i class="fas fa-birthday-cake"></i> + <i class="fas fa-mug-hot"></i></div>
+                            <h3 class="font-bold text-lg text-gray-800">Torta + Café</h3>
+                        </div>
+                        <p class="text-2xl font-brand font-bold text-ms-dark mt-2">$9.000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            
+            <!-- Cafetería -->
+            <section class="bg-white rounded-2xl shadow-md p-6 animate-in delay-200 border-t-4 border-ms-dark">
+                <div class="flex items-center mb-6 border-b border-ms-card pb-3">
+                    <div class="w-10 h-10 rounded-full bg-ms-bg flex items-center justify-center text-ms-dark mr-3">
+                        <i class="fas fa-coffee text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-brand font-bold text-ms-dark">Cafetería</h2>
+                </div>
+                
+                <ul class="space-y-4">
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Café</span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$3.500</span>
+                    </li>
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Café con leche</span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$4.000</span>
+                    </li>
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Lágrima</span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$4.000</span>
+                    </li>
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Ice Latte</span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$5.000</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Bebidas -->
+            <section class="bg-white rounded-2xl shadow-md p-6 animate-in delay-200 border-t-4 border-ms-accent">
+                <div class="flex items-center mb-6 border-b border-ms-card pb-3">
+                    <div class="w-10 h-10 rounded-full bg-ms-bg flex items-center justify-center text-ms-dark mr-3">
+                        <i class="fas fa-glass-water text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-brand font-bold text-ms-dark">Bebidas</h2>
+                </div>
+                
+                <ul class="space-y-4">
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Agua <span class="text-sm font-normal text-gray-500">(500ml)</span></span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$2.500</span>
+                    </li>
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Agua con gas <span class="text-sm font-normal text-gray-500">(500ml)</span></span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$2.500</span>
+                    </li>
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Agua saborizada</span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$3.000</span>
+                    </li>
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Gaseosa <span class="text-sm font-normal text-gray-500">(500ml)</span></span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$3.000</span>
+                    </li>
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Licuado</span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$5.000</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Dulce -->
+            <section class="bg-white rounded-2xl shadow-md p-6 animate-in delay-300 border-t-4 border-ms-card">
+                <div class="flex items-center mb-6 border-b border-ms-card pb-3">
+                    <div class="w-10 h-10 rounded-full bg-ms-bg flex items-center justify-center text-ms-dark mr-3">
+                        <i class="fas fa-cookie-bite text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-brand font-bold text-ms-dark">Dulce</h2>
+                </div>
+                
+                <ul class="space-y-5">
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Medialuna</span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$1.000</span>
+                    </li>
+                    <li class="block">
+                        <div class="flex items-baseline justify-between">
+                            <span class="font-bold text-gray-700">Petit Four</span>
+                            <span class="dashed-line"></span>
+                            <span class="price-tag px-3 py-1 rounded-full text-sm">$2.000</span>
+                        </div>
+                        <p class="text-sm text-ms-dark mt-1 pl-2 border-l-2 border-ms-card italic">Lemon pie, Toffi o Pasta de maní</p>
+                    </li>
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Eclair</span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$2.500</span>
+                    </li>
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Cupcake <span class="text-xs text-gray-500">personalizado</span></span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$3.500</span>
+                    </li>
+                    <li class="flex items-baseline justify-between">
+                        <span class="font-bold text-gray-700">Torta del día</span>
+                        <span class="dashed-line"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$6.000</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Salado -->
+            <section class="bg-white rounded-2xl shadow-md p-6 animate-in delay-300 border-t-4 border-ms-dark">
+                <div class="flex items-center mb-6 border-b border-ms-card pb-3">
+                    <div class="w-10 h-10 rounded-full bg-ms-bg flex items-center justify-center text-ms-dark mr-3">
+                        <i class="fas fa-bread-slice text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-brand font-bold text-ms-dark">Salado</h2>
+                </div>
+                
+                <ul class="space-y-4">
+                    <li class="flex items-baseline justify-between">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-gray-700">Medialuna</span>
+                            <span class="text-sm text-gray-500">Jamón y Queso</span>
+                        </div>
+                        <span class="dashed-line mt-4"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$2.000</span>
+                    </li>
+                    <li class="flex items-baseline justify-between mt-4">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-gray-700">Pebete</span>
+                            <span class="text-sm text-gray-500">Jamón y Queso</span>
+                        </div>
+                        <span class="dashed-line mt-4"></span>
+                        <span class="price-tag px-3 py-1 rounded-full text-sm">$4.500</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer class="mt-12 text-center text-ms-dark opacity-80 pb-6">
+        <p class="font-brand text-lg">Más Sabor</p>
+        <p class="text-lg font-bold my-2"><i class="fas fa-phone mr-2"></i> 221 556 9289</p>
+        <p class="text-sm mb-4">¡Esperamos verte pronto!</p>
+        <div class="flex justify-center space-x-4">
+            <a href="#" class="w-8 h-8 rounded-full bg-ms-dark text-white flex items-center justify-center hover:bg-ms-accent transition"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-ms-dark text-white flex items-center justify-center hover:bg-ms-accent transition"><i class="fab fa-facebook-f"></i></a>
+            <!-- Enlace directo a WhatsApp con el número proporcionado -->
+            <a href="https://wa.me/5492215569289" target="_blank" class="w-8 h-8 rounded-full bg-ms-dark text-white flex items-center justify-center hover:bg-ms-accent transition"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+</body>
+</html>
