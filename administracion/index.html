@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
-  <title>Panel Interno - Mas Sabor</title>
+  <title>Panel Interno - Menu</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,6 @@
       }
     };
 
-    // Prevent embedding in third-party frames.
     try {
       if (window.top !== window.self) {
         window.top.location = window.self.location;
@@ -53,96 +52,82 @@
     }
   </style>
 </head>
-<body class="text-gray-800 pb-10">
+<body data-admin-page="home" class="text-gray-800 pb-10">
   <header class="bg-ms-dark text-white py-6 shadow-lg">
     <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
       <div>
         <h1 class="font-brand text-3xl">Panel Interno</h1>
-        <p class="text-ms-bg text-sm">Mas Sabor - protegido por Cloudflare Access</p>
+        <p class="text-ms-bg text-sm">Gestion de contenido</p>
       </div>
       <a href="../" class="underline decoration-dotted text-sm">Ver sitio publico</a>
     </div>
   </header>
 
   <main class="max-w-6xl mx-auto px-4 mt-6 space-y-6">
-    <section class="bg-white border border-ms-card rounded-xl p-4 shadow-sm">
-      <p class="text-sm text-gray-700">
-        Este panel no expone credenciales en cliente. El control de acceso debe hacerse en Cloudflare Access sobre la ruta
-        <code>/administracion/*</code>.
-      </p>
-      <p class="text-xs text-gray-500 mt-2">
-        Guarda cambios locales para editar, y exporta JSON para publicarlos en GitHub Pages.
-      </p>
+    <nav class="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm">
+      <a data-nav="home" href="./" class="rounded-lg bg-white px-3 py-2 border border-ms-card text-center">Menu</a>
+      <a data-nav="datos" href="datos.html" class="rounded-lg bg-white px-3 py-2 border border-ms-card text-center">Datos</a>
+      <a data-nav="redes" href="redes.html" class="rounded-lg bg-white px-3 py-2 border border-ms-card text-center">Redes</a>
+      <a data-nav="promociones" href="promociones.html" class="rounded-lg bg-white px-3 py-2 border border-ms-card text-center">Promociones</a>
+      <a data-nav="productos" href="productos.html" class="rounded-lg bg-white px-3 py-2 border border-ms-card text-center">Productos</a>
+    </nav>
 
-      <div class="mt-3 flex flex-wrap gap-2">
-        <button id="save-button" type="button" class="rounded-lg bg-ms-dark text-white px-4 py-2 text-sm hover:bg-ms-accent">Guardar borrador local</button>
-        <button id="export-button" type="button" class="rounded-lg bg-blue-600 text-white px-4 py-2 text-sm hover:bg-blue-700">Exportar JSON</button>
-        <button id="import-button" type="button" class="rounded-lg bg-amber-500 text-white px-4 py-2 text-sm hover:bg-amber-600">Importar JSON</button>
-        <button id="reset-button" type="button" class="rounded-lg bg-red-500 text-white px-4 py-2 text-sm hover:bg-red-600">Descartar borrador local</button>
-        <input id="import-input" type="file" accept="application/json" class="hidden">
-      </div>
+    <section class="bg-white border-2 border-ms-card rounded-2xl p-5 shadow-sm">
+      <h2 class="font-brand text-2xl text-ms-dark">Que quieres editar hoy?</h2>
+      <p class="text-sm text-gray-600 mt-1">Entra a una seccion y guarda cuando termines.</p>
 
-      <p id="status-box" class="hidden mt-3 text-sm rounded-lg px-3 py-2"></p>
-    </section>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <a href="datos.html" class="rounded-xl border border-ms-card bg-ms-light/60 p-4 hover:border-ms-dark transition">
+          <div class="text-ms-dark text-2xl"><i class="fas fa-store"></i></div>
+          <h3 class="font-bold mt-2">Datos del negocio</h3>
+          <p class="text-sm text-gray-600">Nombre, telefono, WhatsApp y textos.</p>
+        </a>
 
-    <section class="bg-white border-2 border-ms-card rounded-xl p-4 space-y-3 shadow-sm">
-      <h2 class="font-brand text-2xl text-ms-dark">Datos generales</h2>
+        <a href="redes.html" class="rounded-xl border border-ms-card bg-ms-light/60 p-4 hover:border-ms-dark transition">
+          <div class="text-ms-dark text-2xl"><i class="fas fa-share-nodes"></i></div>
+          <h3 class="font-bold mt-2">Redes sociales</h3>
+          <p class="text-sm text-gray-600">Instagram, Facebook, WhatsApp y mas.</p>
+        </a>
 
-      <div class="grid gap-3 md:grid-cols-2">
-        <label class="block">
-          <span class="text-sm font-semibold text-gray-700 mb-1 block">Nombre del negocio</span>
-          <input id="business-name" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none">
-        </label>
+        <a href="promociones.html" class="rounded-xl border border-ms-card bg-ms-light/60 p-4 hover:border-ms-dark transition">
+          <div class="text-ms-dark text-2xl"><i class="fas fa-tags"></i></div>
+          <h3 class="font-bold mt-2">Promociones</h3>
+          <p class="text-sm text-gray-600">Combos con iconos visuales.</p>
+        </a>
 
-        <label class="block">
-          <span class="text-sm font-semibold text-gray-700 mb-1 block">Subtitulo</span>
-          <input id="business-subtitle" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none">
-        </label>
-
-        <label class="block">
-          <span class="text-sm font-semibold text-gray-700 mb-1 block">Logo (ruta relativa)</span>
-          <input id="business-logo" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none" placeholder="logo.png">
-        </label>
-
-        <label class="block">
-          <span class="text-sm font-semibold text-gray-700 mb-1 block">Telefono visible</span>
-          <input id="business-phone" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none" placeholder="221 556 9289">
-        </label>
-
-        <label class="block">
-          <span class="text-sm font-semibold text-gray-700 mb-1 block">WhatsApp (solo numeros)</span>
-          <input id="business-whatsapp" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none" placeholder="5492215569289">
-        </label>
-
-        <label class="block">
-          <span class="text-sm font-semibold text-gray-700 mb-1 block">Texto del footer</span>
-          <input id="business-footer" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none" placeholder="Esperamos verte pronto!">
-        </label>
+        <a href="productos.html" class="rounded-xl border border-ms-card bg-ms-light/60 p-4 hover:border-ms-dark transition">
+          <div class="text-ms-dark text-2xl"><i class="fas fa-utensils"></i></div>
+          <h3 class="font-bold mt-2">Productos y categorias</h3>
+          <p class="text-sm text-gray-600">Altas, cambios y bajas de tu menu.</p>
+        </a>
       </div>
     </section>
 
-    <section class="bg-white border-2 border-ms-card rounded-xl p-4 space-y-3 shadow-sm">
-      <div class="flex flex-wrap items-center justify-between gap-3">
-        <h2 class="font-brand text-2xl text-ms-dark">Redes sociales</h2>
-        <button id="add-social-button" type="button" class="rounded-lg bg-ms-dark text-white px-3 py-2 text-sm hover:bg-ms-accent">Agregar red</button>
+    <section class="bg-white border-2 border-ms-card rounded-2xl p-5 shadow-sm">
+      <h2 class="font-brand text-2xl text-ms-dark">Resumen rapido</h2>
+      <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5 text-sm">
+        <div class="rounded-lg bg-ms-light/70 p-3 border border-ms-card">
+          <p class="text-gray-500">Negocio</p>
+          <p id="home-business-name" class="font-bold text-ms-dark">-</p>
+        </div>
+        <div class="rounded-lg bg-ms-light/70 p-3 border border-ms-card">
+          <p class="text-gray-500">Categorias</p>
+          <p id="home-categories-count" class="font-bold text-ms-dark">0</p>
+        </div>
+        <div class="rounded-lg bg-ms-light/70 p-3 border border-ms-card">
+          <p class="text-gray-500">Productos</p>
+          <p id="home-products-count" class="font-bold text-ms-dark">0</p>
+        </div>
+        <div class="rounded-lg bg-ms-light/70 p-3 border border-ms-card">
+          <p class="text-gray-500">Promociones</p>
+          <p id="home-promotions-count" class="font-bold text-ms-dark">0</p>
+        </div>
+        <div class="rounded-lg bg-ms-light/70 p-3 border border-ms-card">
+          <p class="text-gray-500">Redes</p>
+          <p id="home-socials-count" class="font-bold text-ms-dark">0</p>
+        </div>
       </div>
-      <div id="socials-list" class="space-y-2"></div>
-    </section>
-
-    <section class="bg-white border-2 border-ms-card rounded-xl p-4 space-y-3 shadow-sm">
-      <div class="flex flex-wrap items-center justify-between gap-3">
-        <h2 class="font-brand text-2xl text-ms-dark">Promociones</h2>
-        <button id="add-promotion-button" type="button" class="rounded-lg bg-ms-dark text-white px-3 py-2 text-sm hover:bg-ms-accent">Agregar promo</button>
-      </div>
-      <div id="promotions-list" class="space-y-2"></div>
-    </section>
-
-    <section class="bg-white border-2 border-ms-card rounded-xl p-4 space-y-3 shadow-sm">
-      <div class="flex flex-wrap items-center justify-between gap-3">
-        <h2 class="font-brand text-2xl text-ms-dark">Categorias y productos</h2>
-        <button id="add-category-button" type="button" class="rounded-lg bg-ms-dark text-white px-3 py-2 text-sm hover:bg-ms-accent">Agregar categoria</button>
-      </div>
-      <div id="categories-list" class="space-y-3"></div>
+      <p class="mt-3 text-sm text-gray-600">Estado en este navegador: <span id="home-draft-state" class="font-semibold text-ms-dark">-</span></p>
     </section>
   </main>
 

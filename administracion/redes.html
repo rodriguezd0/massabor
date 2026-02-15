@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <title>Panel Interno - Redes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ms: {
+              light: '#dafddc',
+              bg: '#dcfddc',
+              card: '#bbe1be',
+              accent: '#7fb187',
+              dark: '#59a96d'
+            }
+          },
+          fontFamily: {
+            brand: ['Fredoka', 'sans-serif'],
+            body: ['Nunito', 'sans-serif']
+          }
+        }
+      }
+    };
+
+    try {
+      if (window.top !== window.self) {
+        window.top.location = window.self.location;
+      }
+    } catch (error) {
+      // Ignore cross-origin frame access errors.
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #dcfddc;
+      background-image: radial-gradient(#59a96d 0.5px, transparent 0.5px), radial-gradient(#59a96d 0.5px, #dcfddc 0.5px);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+    }
+  </style>
+</head>
+<body data-admin-page="redes" class="text-gray-800 pb-10">
+  <header class="bg-ms-dark text-white py-6 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div>
+        <h1 class="font-brand text-3xl">Redes Sociales</h1>
+        <p class="text-ms-bg text-sm">Elige la red y pega el enlace</p>
+      </div>
+      <a href="../" class="underline decoration-dotted text-sm">Ver sitio publico</a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 mt-6 space-y-6">
+    <nav class="grid grid-cols-2 md:grid-cols-5 gap-2 text-sm">
+      <a data-nav="home" href="./" class="rounded-lg bg-white px-3 py-2 border border-ms-card text-center">Menu</a>
+      <a data-nav="datos" href="datos.html" class="rounded-lg bg-white px-3 py-2 border border-ms-card text-center">Datos</a>
+      <a data-nav="redes" href="redes.html" class="rounded-lg bg-white px-3 py-2 border border-ms-card text-center">Redes</a>
+      <a data-nav="promociones" href="promociones.html" class="rounded-lg bg-white px-3 py-2 border border-ms-card text-center">Promociones</a>
+      <a data-nav="productos" href="productos.html" class="rounded-lg bg-white px-3 py-2 border border-ms-card text-center">Productos</a>
+    </nav>
+
+    <section class="bg-white border border-ms-card rounded-xl p-4 shadow-sm">
+      <div class="flex flex-wrap gap-2">
+        <button id="save-button" type="button" class="rounded-lg bg-ms-dark text-white px-4 py-2 text-sm hover:bg-ms-accent">Guardar cambios</button>
+        <button id="reset-button" type="button" class="rounded-lg bg-red-500 text-white px-4 py-2 text-sm hover:bg-red-600">Descartar cambios de este navegador</button>
+      </div>
+      <p id="status-box" class="hidden mt-3 text-sm rounded-lg px-3 py-2"></p>
+    </section>
+
+    <section class="bg-white border-2 border-ms-card rounded-xl p-4 space-y-3 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <h2 class="font-brand text-2xl text-ms-dark">Listado de redes</h2>
+        <button id="add-social-button" type="button" class="rounded-lg bg-ms-dark text-white px-3 py-2 text-sm hover:bg-ms-accent">Agregar red</button>
+      </div>
+      <div id="socials-list" class="space-y-3"></div>
+    </section>
+  </main>
+
+  <script src="../assets/js/site-store.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>
