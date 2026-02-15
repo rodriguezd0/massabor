@@ -1,0 +1,81 @@
+﻿{
+  "business": {
+    "name": "Mas Sabor",
+    "subtitle": "Cafeteria & Pasteleria Artesanal",
+    "logoPath": "logo.png",
+    "phoneDisplay": "221 556 9289",
+    "whatsappNumber": "5492215569289",
+    "footerNote": "Esperamos verte pronto!"
+  },
+  "promotions": [
+    {
+      "title": "Cafe + Petit Four",
+      "price": 5000,
+      "iconLeft": "fas fa-mug-hot",
+      "iconRight": "fas fa-cookie"
+    },
+    {
+      "title": "Cafe + 2 Medialunas",
+      "price": 5000,
+      "iconLeft": "fas fa-mug-hot",
+      "iconRight": "fas fa-bread-slice"
+    },
+    {
+      "title": "Torta + Cafe",
+      "price": 9000,
+      "iconLeft": "fas fa-birthday-cake",
+      "iconRight": "fas fa-mug-hot"
+    }
+  ],
+  "categories": [
+    {
+      "title": "Cafeteria",
+      "icon": "fas fa-coffee",
+      "color": "dark",
+      "items": [
+        { "name": "Cafe", "description": "", "price": 3500 },
+        { "name": "Cafe con leche", "description": "", "price": 4000 },
+        { "name": "Lagrima", "description": "", "price": 4000 },
+        { "name": "Ice Latte", "description": "", "price": 5000 }
+      ]
+    },
+    {
+      "title": "Bebidas",
+      "icon": "fas fa-glass-water",
+      "color": "accent",
+      "items": [
+        { "name": "Agua (500ml)", "description": "", "price": 2500 },
+        { "name": "Agua con gas (500ml)", "description": "", "price": 2500 },
+        { "name": "Agua saborizada", "description": "", "price": 3000 },
+        { "name": "Gaseosa (500ml)", "description": "", "price": 3000 },
+        { "name": "Licuado", "description": "", "price": 5000 }
+      ]
+    },
+    {
+      "title": "Dulce",
+      "icon": "fas fa-cookie-bite",
+      "color": "card",
+      "items": [
+        { "name": "Medialuna", "description": "", "price": 1000 },
+        { "name": "Petit Four", "description": "Lemon pie, Toffi o Pasta de mani", "price": 2000 },
+        { "name": "Eclair", "description": "", "price": 2500 },
+        { "name": "Cupcake personalizado", "description": "", "price": 3500 },
+        { "name": "Torta del dia", "description": "", "price": 6000 }
+      ]
+    },
+    {
+      "title": "Salado",
+      "icon": "fas fa-bread-slice",
+      "color": "dark",
+      "items": [
+        { "name": "Medialuna", "description": "Jamon y queso", "price": 2000 },
+        { "name": "Pebete", "description": "Jamon y queso", "price": 4500 }
+      ]
+    }
+  ],
+  "socials": [
+    { "label": "Instagram", "icon": "fab fa-instagram", "url": "#" },
+    { "label": "Facebook", "icon": "fab fa-facebook-f", "url": "#" },
+    { "label": "WhatsApp", "icon": "fab fa-whatsapp", "url": "https://wa.me/5492215569289" }
+  ]
+}

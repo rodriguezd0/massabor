@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <title>Panel Interno - Mas Sabor</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ms: {
+              light: '#dafddc',
+              bg: '#dcfddc',
+              card: '#bbe1be',
+              accent: '#7fb187',
+              dark: '#59a96d'
+            }
+          },
+          fontFamily: {
+            brand: ['Fredoka', 'sans-serif'],
+            body: ['Nunito', 'sans-serif']
+          }
+        }
+      }
+    };
+
+    // Prevent embedding in third-party frames.
+    try {
+      if (window.top !== window.self) {
+        window.top.location = window.self.location;
+      }
+    } catch (error) {
+      // Ignore cross-origin frame access errors.
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: #dcfddc;
+      background-image: radial-gradient(#59a96d 0.5px, transparent 0.5px), radial-gradient(#59a96d 0.5px, #dcfddc 0.5px);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+    }
+  </style>
+</head>
+<body class="text-gray-800 pb-10">
+  <header class="bg-ms-dark text-white py-6 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <div>
+        <h1 class="font-brand text-3xl">Panel Interno</h1>
+        <p class="text-ms-bg text-sm">Mas Sabor - protegido por Cloudflare Access</p>
+      </div>
+      <a href="../" class="underline decoration-dotted text-sm">Ver sitio publico</a>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 mt-6 space-y-6">
+    <section class="bg-white border border-ms-card rounded-xl p-4 shadow-sm">
+      <p class="text-sm text-gray-700">
+        Este panel no expone credenciales en cliente. El control de acceso debe hacerse en Cloudflare Access sobre la ruta
+        <code>/administracion/*</code>.
+      </p>
+      <p class="text-xs text-gray-500 mt-2">
+        Guarda cambios locales para editar, y exporta JSON para publicarlos en GitHub Pages.
+      </p>
+
+      <div class="mt-3 flex flex-wrap gap-2">
+        <button id="save-button" type="button" class="rounded-lg bg-ms-dark text-white px-4 py-2 text-sm hover:bg-ms-accent">Guardar borrador local</button>
+        <button id="export-button" type="button" class="rounded-lg bg-blue-600 text-white px-4 py-2 text-sm hover:bg-blue-700">Exportar JSON</button>
+        <button id="import-button" type="button" class="rounded-lg bg-amber-500 text-white px-4 py-2 text-sm hover:bg-amber-600">Importar JSON</button>
+        <button id="reset-button" type="button" class="rounded-lg bg-red-500 text-white px-4 py-2 text-sm hover:bg-red-600">Descartar borrador local</button>
+        <input id="import-input" type="file" accept="application/json" class="hidden">
+      </div>
+
+      <p id="status-box" class="hidden mt-3 text-sm rounded-lg px-3 py-2"></p>
+    </section>
+
+    <section class="bg-white border-2 border-ms-card rounded-xl p-4 space-y-3 shadow-sm">
+      <h2 class="font-brand text-2xl text-ms-dark">Datos generales</h2>
+
+      <div class="grid gap-3 md:grid-cols-2">
+        <label class="block">
+          <span class="text-sm font-semibold text-gray-700 mb-1 block">Nombre del negocio</span>
+          <input id="business-name" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none">
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-semibold text-gray-700 mb-1 block">Subtitulo</span>
+          <input id="business-subtitle" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none">
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-semibold text-gray-700 mb-1 block">Logo (ruta relativa)</span>
+          <input id="business-logo" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none" placeholder="logo.png">
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-semibold text-gray-700 mb-1 block">Telefono visible</span>
+          <input id="business-phone" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none" placeholder="221 556 9289">
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-semibold text-gray-700 mb-1 block">WhatsApp (solo numeros)</span>
+          <input id="business-whatsapp" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none" placeholder="5492215569289">
+        </label>
+
+        <label class="block">
+          <span class="text-sm font-semibold text-gray-700 mb-1 block">Texto del footer</span>
+          <input id="business-footer" type="text" class="w-full rounded-lg border border-ms-card px-3 py-2 focus:border-ms-dark focus:outline-none" placeholder="Esperamos verte pronto!">
+        </label>
+      </div>
+    </section>
+
+    <section class="bg-white border-2 border-ms-card rounded-xl p-4 space-y-3 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <h2 class="font-brand text-2xl text-ms-dark">Redes sociales</h2>
+        <button id="add-social-button" type="button" class="rounded-lg bg-ms-dark text-white px-3 py-2 text-sm hover:bg-ms-accent">Agregar red</button>
+      </div>
+      <div id="socials-list" class="space-y-2"></div>
+    </section>
+
+    <section class="bg-white border-2 border-ms-card rounded-xl p-4 space-y-3 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <h2 class="font-brand text-2xl text-ms-dark">Promociones</h2>
+        <button id="add-promotion-button" type="button" class="rounded-lg bg-ms-dark text-white px-3 py-2 text-sm hover:bg-ms-accent">Agregar promo</button>
+      </div>
+      <div id="promotions-list" class="space-y-2"></div>
+    </section>
+
+    <section class="bg-white border-2 border-ms-card rounded-xl p-4 space-y-3 shadow-sm">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <h2 class="font-brand text-2xl text-ms-dark">Categorias y productos</h2>
+        <button id="add-category-button" type="button" class="rounded-lg bg-ms-dark text-white px-3 py-2 text-sm hover:bg-ms-accent">Agregar categoria</button>
+      </div>
+      <div id="categories-list" class="space-y-3"></div>
+    </section>
+  </main>
+
+  <script src="../assets/js/site-store.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>
