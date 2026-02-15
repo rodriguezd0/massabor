@@ -157,30 +157,26 @@
         var row = document.createElement("div");
         row.className = "flex items-baseline justify-between";
 
-        var nameWrap = document.createElement("div");
-        nameWrap.className = "flex flex-col";
-
         var name = document.createElement("span");
         name.className = "font-bold text-gray-700";
         name.textContent = item.name || "Producto";
 
-        nameWrap.appendChild(name);
-
-        if (item.description) {
-          var description = document.createElement("span");
-          description.className = "text-sm text-gray-500";
-          description.textContent = item.description;
-          nameWrap.appendChild(description);
-        }
-
         var dashed = document.createElement("span");
         dashed.className = "dashed-line";
 
-        row.appendChild(nameWrap);
+        row.appendChild(name);
         row.appendChild(dashed);
         row.appendChild(createPriceTag(item.price));
 
         li.appendChild(row);
+
+        if (item.description) {
+          var description = document.createElement("p");
+          description.className = "text-sm text-gray-500 mt-1";
+          description.textContent = item.description;
+          li.appendChild(description);
+        }
+
         list.appendChild(li);
       });
 

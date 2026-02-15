@@ -8,7 +8,7 @@
   var state = store.getDefaultData();
   var rerenderCurrentPage = function () {};
 
-  var statusBox = document.getElementById("status-box");
+  var toastTimer = null;
   var saveButton = document.getElementById("save-button");
   var resetButton = document.getElementById("reset-button");
 
@@ -63,31 +63,59 @@
     }
   }
 
-  function showStatus(message, level) {
-    if (!statusBox) {
-      return;
+  function getToastNode() {
+    var existing = document.getElementById("admin-toast");
+    if (existing) {
+      return existing;
     }
 
-    statusBox.textContent = message;
-    statusBox.classList.remove("hidden", "bg-red-100", "text-red-700", "bg-green-100", "text-green-700", "bg-yellow-100", "text-yellow-700");
+    var toast = document.createElement("div");
+    toast.id = "admin-toast";
+    toast.className =
+      "fixed top-4 right-4 z-50 hidden min-w-[240px] max-w-[340px] rounded-lg px-4 py-3 text-sm font-semibold shadow-lg border";
+    document.body.appendChild(toast);
+    return toast;
+  }
+
+  function showStatus(message, level) {
+    var toast = getToastNode();
+    toast.textContent = message;
+    toast.classList.remove(
+      "hidden",
+      "bg-red-100",
+      "text-red-700",
+      "border-red-200",
+      "bg-green-100",
+      "text-green-700",
+      "border-green-200",
+      "bg-yellow-100",
+      "text-yellow-700",
+      "border-yellow-200"
+    );
 
     if (level === "error") {
-      statusBox.classList.add("bg-red-100", "text-red-700");
-      return;
+      toast.classList.add("bg-red-100", "text-red-700", "border-red-200");
+    } else if (level === "warn") {
+      toast.classList.add("bg-yellow-100", "text-yellow-700", "border-yellow-200");
+    } else {
+      toast.classList.add("bg-green-100", "text-green-700", "border-green-200");
     }
 
-    if (level === "warn") {
-      statusBox.classList.add("bg-yellow-100", "text-yellow-700");
-      return;
+    if (toastTimer) {
+      window.clearTimeout(toastTimer);
     }
 
-    statusBox.classList.add("bg-green-100", "text-green-700");
+    toastTimer = window.setTimeout(function () {
+      toast.classList.add("hidden");
+    }, 2600);
   }
 
   function hideStatus() {
-    if (statusBox) {
-      statusBox.classList.add("hidden");
+    var toast = document.getElementById("admin-toast");
+    if (!toast) {
+      return;
     }
+    toast.classList.add("hidden");
   }
 
   function makeFieldLabel(text) {
@@ -240,11 +268,6 @@
   }
 
   function resetChanges() {
-    var confirmed = window.confirm("Se van a borrar los cambios guardados en este navegador. Continuar?");
-    if (!confirmed) {
-      return;
-    }
-
     store.resetData();
 
     fetchPublishedData()
@@ -254,7 +277,7 @@
       .then(function (freshState) {
         state = freshState;
         rerenderCurrentPage();
-        showStatus("Se restauraron los datos guardados en GitHub.", "warn");
+        showStatus("Cambios descartados.", "warn");
       });
   }
 
@@ -287,7 +310,6 @@
       var productsNode = document.getElementById("home-products-count");
       var promotionsNode = document.getElementById("home-promotions-count");
       var socialsNode = document.getElementById("home-socials-count");
-      var draftState = document.getElementById("home-draft-state");
 
       if (businessName) {
         businessName.textContent = state.business && state.business.name ? state.business.name : "-";
@@ -303,9 +325,6 @@
       }
       if (socialsNode) {
         socialsNode.textContent = String(socialsCount);
-      }
-      if (draftState) {
-        draftState.textContent = store.hasSavedData() ? "Hay cambios guardados" : "Sin cambios locales";
       }
     }
 
