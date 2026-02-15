@@ -16,36 +16,64 @@
     { key: "instagram", label: "Instagram", icon: "fab fa-instagram", defaultUrl: "https://instagram.com/" },
     { key: "facebook", label: "Facebook", icon: "fab fa-facebook-f", defaultUrl: "https://facebook.com/" },
     { key: "whatsapp", label: "WhatsApp", icon: "fab fa-whatsapp", defaultUrl: "https://wa.me/" },
+    { key: "linkedin", label: "LinkedIn", icon: "fab fa-linkedin-in", defaultUrl: "https://linkedin.com/in/" },
     { key: "tiktok", label: "TikTok", icon: "fab fa-tiktok", defaultUrl: "https://www.tiktok.com/@" },
     { key: "youtube", label: "YouTube", icon: "fab fa-youtube", defaultUrl: "https://youtube.com/" },
     { key: "x", label: "X / Twitter", icon: "fab fa-twitter", defaultUrl: "https://x.com/" },
     { key: "telegram", label: "Telegram", icon: "fab fa-telegram-plane", defaultUrl: "https://t.me/" },
+    { key: "email", label: "Correo", icon: "fas fa-envelope", defaultUrl: "mailto:" },
+    { key: "telefono", label: "Telefono", icon: "fas fa-phone", defaultUrl: "tel:" },
+    { key: "mapa", label: "Google Maps", icon: "fas fa-map-location-dot", defaultUrl: "https://maps.google.com/?q=" },
     { key: "sitio", label: "Sitio web", icon: "fas fa-globe", defaultUrl: "https://" }
   ];
 
   var PRODUCT_ICON_OPTIONS = [
     { value: "fas fa-coffee", label: "Cafe" },
+    { value: "fas fa-mug-saucer", label: "Taza cafe" },
     { value: "fas fa-mug-hot", label: "Taza caliente" },
+    { value: "fas fa-martini-glass-citrus", label: "Trago" },
+    { value: "fas fa-wine-glass", label: "Copa" },
+    { value: "fas fa-wine-bottle", label: "Botella" },
+    { value: "fas fa-beer-mug-empty", label: "Cerveza" },
     { value: "fas fa-glass-water", label: "Bebidas" },
+    { value: "fas fa-bottle-water", label: "Agua botella" },
+    { value: "fas fa-lemon", label: "Limonada" },
     { value: "fas fa-cookie-bite", label: "Galletas" },
+    { value: "fas fa-cookie", label: "Cookie" },
     { value: "fas fa-bread-slice", label: "Panificados" },
-    { value: "fas fa-birthday-cake", label: "Tortas" },
+    { value: "fas fa-cake-candles", label: "Tortas" },
+    { value: "fas fa-candy-cane", label: "Dulces" },
     { value: "fas fa-ice-cream", label: "Helados" },
     { value: "fas fa-cheese", label: "Quesos" },
     { value: "fas fa-pizza-slice", label: "Pizza" },
+    { value: "fas fa-burger", label: "Hamburguesa" },
+    { value: "fas fa-hotdog", label: "Pancho" },
+    { value: "fas fa-drumstick-bite", label: "Pollo" },
+    { value: "fas fa-fish", label: "Pescado" },
+    { value: "fas fa-egg", label: "Desayuno" },
     { value: "fas fa-utensils", label: "Cubiertos" }
   ];
 
   var PROMO_ICON_OPTIONS = [
     { value: "fas fa-mug-hot", label: "Taza caliente" },
     { value: "fas fa-coffee", label: "Cafe" },
+    { value: "fas fa-mug-saucer", label: "Taza cafe" },
     { value: "fas fa-cookie", label: "Cookie" },
+    { value: "fas fa-cookie-bite", label: "Galleta" },
     { value: "fas fa-bread-slice", label: "Pan" },
-    { value: "fas fa-birthday-cake", label: "Torta" },
+    { value: "fas fa-cake-candles", label: "Torta" },
     { value: "fas fa-ice-cream", label: "Helado" },
     { value: "fas fa-cheese", label: "Queso" },
     { value: "fas fa-pizza-slice", label: "Pizza" },
+    { value: "fas fa-burger", label: "Hamburguesa" },
+    { value: "fas fa-hotdog", label: "Pancho" },
+    { value: "fas fa-wine-glass", label: "Copa" },
+    { value: "fas fa-beer-mug-empty", label: "Cerveza" },
+    { value: "fas fa-glass-water", label: "Vaso agua" },
+    { value: "fas fa-lemon", label: "Limon" },
+    { value: "fas fa-utensil-spoon", label: "Postre" },
     { value: "fas fa-utensils", label: "Comida" },
+    { value: "fas fa-tags", label: "Oferta" },
     { value: "fas fa-star", label: "Estrella" }
   ];
 
@@ -222,6 +250,9 @@
     if (source.indexOf("whatsapp") >= 0 || source.indexOf("wa.me") >= 0) {
       return "whatsapp";
     }
+    if (source.indexOf("linkedin") >= 0) {
+      return "linkedin";
+    }
     if (source.indexOf("tiktok") >= 0) {
       return "tiktok";
     }
@@ -233,6 +264,15 @@
     }
     if (source.indexOf("telegram") >= 0 || source.indexOf("t.me") >= 0) {
       return "telegram";
+    }
+    if (source.indexOf("mailto:") >= 0 || source.indexOf("correo") >= 0 || source.indexOf("email") >= 0) {
+      return "email";
+    }
+    if (source.indexOf("tel:") >= 0 || source.indexOf("telefono") >= 0) {
+      return "telefono";
+    }
+    if (source.indexOf("maps.google") >= 0 || source.indexOf("google.com/maps") >= 0 || source.indexOf("mapa") >= 0) {
+      return "mapa";
     }
 
     return "sitio";
